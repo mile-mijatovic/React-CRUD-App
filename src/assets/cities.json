@@ -1,0 +1,54 @@
+[
+  {
+    "value": "Berlin",
+    "label": "Berlin"
+  },
+  {
+    "value": "Amsterdam",
+    "label": "Amsterdam"
+  },
+  {
+    "value": "Ljubljana",
+    "label": "Ljubljana"
+  },
+  {
+    "value": "Belgrade",
+    "label": "Belgrade"
+  },
+  {
+    "value": "Zagreb",
+    "label": "Zagreb"
+  },
+  {
+    "value": "Sarajevo",
+    "label": "Sarajevo"
+  },
+  {
+    "value": "Prishtina",
+    "label": "Prishtina"
+  },
+  {
+    "value": "Rome",
+    "label": "Rome"
+  },
+  {
+    "value": "Paris",
+    "label": "Paris"
+  },
+  {
+    "value": "Madrid",
+    "label": "Madrid"
+  },
+  {
+    "value": "Istanbul",
+    "label": "Istanbul"
+  },
+  {
+    "value": "Moscow",
+    "label": "Moscow"
+  },
+  {
+    "value": "Stockholm",
+    "label": "Stockholm"
+  }
+]
