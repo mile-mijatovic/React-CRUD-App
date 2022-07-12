@@ -26,6 +26,11 @@ const Wrapper = styled("div")({
   margin: "15px",
 });
 
+let latitudeRegex =
+  /^(\+|-)?((\d((\.)|\.\d{1,6})?)|(0*?[0-8]\d((\.)|\.\d{1,6})?)|(0*?90((\.)|\.0{1,6})?))$/;
+let longitudeRegex =
+  /^(\+|-)?((\d((\.)|\.\d{1,6})?)|(0*?\d\d((\.)|\.\d{1,6})?)|(0*?1[0-7]\d((\.)|\.\d{1,6})?)|(0*?180((\.)|\.0{1,6})?))$/;
+
 // Yup schema for form validation
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -37,8 +42,16 @@ const validationSchema = Yup.object({
     .required("Address is required")
     .max(50, "Address must be less than 20 characters"),
   city: Yup.string().trim().required("City is required"),
-  longitude: Yup.string().trim().required("Longitude is required"),
-  latitude: Yup.string().trim().required("Latitude is required"),
+  // Longitude must be between -180 and 180
+  longitude: Yup.string()
+    .trim()
+    .required("Longitude is required")
+    .matches(longitudeRegex, "Longitude must be between -180 and 180"),
+  // Latitude must be between -90 and 90
+  latitude: Yup.string()
+    .trim()
+    .required("Latitude is required")
+    .matches(latitudeRegex, "Latitude must be between -90 and 90"),
 });
 
 const NewLocation = () => {
