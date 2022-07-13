@@ -6,13 +6,15 @@ import {
 } from "./locationSlice";
 import { showNotification } from "../notification/notificationSlice";
 
+import { auth } from "../../../firebase";
+
 // Database
 import { db } from "../../../firebase";
 
 // Create a new location
 export const createLocation = (location) => {
   return async (dispatch) => {
-    let locationsRef = db.ref("locations");
+    let locationsRef = db.ref("users/" + auth?.currentUser?.uid + "/locations");
 
     // Add new location to database
     locationsRef
@@ -41,7 +43,7 @@ export const createLocation = (location) => {
 export const getLocations = () => {
   return async (dispatch) => {
     dispatch(startLoading());
-    let locationsRef = db.ref("locations");
+    let locationsRef = db.ref("users/" + auth?.currentUser?.uid + "/locations");
     locationsRef
       .once("value")
       .then((snapshot) => {
@@ -72,7 +74,7 @@ export const getLocations = () => {
 // Get a location by id
 export const getLocation = (id) => {
   return async (dispatch) => {
-    let locationsRef = db.ref("locations");
+    let locationsRef = db.ref("users/" + auth?.currentUser?.uid + "/locations");
 
     locationsRef
       .child(id)
@@ -97,7 +99,7 @@ export const getLocation = (id) => {
 // Edit location
 export const editLocation = (id, location) => {
   return async (dispatch) => {
-    let locationsRef = db.ref("locations");
+    let locationsRef = db.ref("users/" + auth?.currentUser?.uid + "/locations");
 
     // Update location in database
     locationsRef
@@ -126,7 +128,7 @@ export const editLocation = (id, location) => {
 // Delete location
 export const deleteLocation = (id) => {
   return async (dispatch) => {
-    let locationsRef = db.ref("locations");
+    let locationsRef = db.ref("users/" + auth?.currentUser?.uid + "/locations");
 
     // Delete location from database
     locationsRef
