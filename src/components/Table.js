@@ -118,7 +118,7 @@ const LocationsTable = ({ rows }) => {
   };
 
   return (
-    <Box sx={{ width: "100%", maxWidth: "1200px" }}>
+    <Box sx={{ width: "93%", maxWidth: "1200px", m: 2 }}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 750 }}>
           <EnhancedTableHead
@@ -132,15 +132,15 @@ const LocationsTable = ({ rows }) => {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow key={row.key}>
-                    <TableCell
-                      sx={{ cursor: "pointer" }}
-                      onClick={() => {
-                        navigate(`/locations/${row.key}`, { state: row });
-                      }}
-                    >
-                      {row.name}
-                    </TableCell>
+                  <TableRow
+                    hover
+                    key={row.key}
+                    sx={{ cursor: "pointer" }}
+                    onClick={() => {
+                      navigate(`/locations/${row.key}`, { state: row });
+                    }}
+                  >
+                    <TableCell>{row.name}</TableCell>
                     <TableCell>{row.address}</TableCell>
                     <TableCell>{row.city}</TableCell>
                     <TableCell>{row.latitude}</TableCell>

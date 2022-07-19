@@ -36,22 +36,23 @@ const validationSchema = Yup.object({
   name: Yup.string()
     .trim()
     .required("Name is required")
-    .max(20, "Name must be less than 20 characters"),
+    .max(20, "Name must be less than 20 characters")
+    .matches(/^[a-zA-Z]+$/, "Name must be letters only"),
   address: Yup.string()
     .trim()
     .required("Address is required")
     .max(50, "Address must be less than 20 characters"),
   city: Yup.string().trim().required("City is required"),
-  // Longitude must be between -180 and 180
+  // Longitude must be number before -180 and 180
   longitude: Yup.string()
     .trim()
     .required("Longitude is required")
-    .matches(longitudeRegex, "Longitude must be between -180 and 180"),
-  // Latitude must be between -90 and 90
+    .matches(longitudeRegex, "Longitude must be number before -180 and 180"),
+  // Latitude must be number before -90 and 90
   latitude: Yup.string()
     .trim()
     .required("Latitude is required")
-    .matches(latitudeRegex, "Latitude must be between -90 and 90"),
+    .matches(latitudeRegex, "Latitude must be number before -90 and 90"),
 });
 
 const NewLocation = () => {

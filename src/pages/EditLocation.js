@@ -35,7 +35,8 @@ const validationSchema = Yup.object({
   name: Yup.string()
     .trim()
     .required("Name is required")
-    .max(20, "Name must be less than 20 characters"),
+    .max(20, "Name must be less than 20 characters")
+    .matches(/^[a-zA-Z]+$/, "Name must be letters only"),
   address: Yup.string()
     .trim()
     .required("Address is required")
